@@ -1,28 +1,41 @@
 <html>
 <head>
   <title>Pitch</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
   <!--<script src="/javascripts/app_main.js"></script>-->
   <script src="app.js"></script>
   <!-- Bootstrap -->
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="js/jquery.screwdefaultbuttonsV2.min.js" ></script>
+
+  
   <style>
 
-	@import url(http://fonts.googleapis.com/css?family=Raleway+Dots)
+    @import url(http://fonts.googleapis.com/css?family=Raleway+Dots)
 
-  	body {
-  		font-family:Raleway;
-  		font-weight:900;
-  	}
+    body {
+      background-color: #848484;
+      font-family:Raleway;
+      font-weight:900;
+    }
+    label {
+      font-size: 20
+    }
+    input[type=radio] {
+      float: left;
+    }
+
 
   </style>
 </head>
 
-<body ng-app="feed" ng-controller="feed_populate">
+<body ng-app="pitch" ng-controller="pitch_me">
  <div class="container">
-  	<div class="header">
+    <div class="header">
     <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation" class="active"><a href="#">Log In</a></li>
@@ -31,42 +44,57 @@
     </nav>
     <h2 class="text-muted"><b>CONNECT</b> YOURSELF</h2>
     <h3 class="text-muted">powered by <span style="color:green" >Pitch</span>.</h3>
-  	</div>
-  	<div class="jumbotron">
-        <div class="btn-group" data-toggle="buttons">
-		  <label class="btn btn-primary active">
-		    <input type="checkbox" autocomplete="off" checked> Art/Design
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Marketing
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Sciences
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Business
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Advertising
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Engineering
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Coding
-		  </label>
-		  <label class="btn btn-primary">
-		    <input type="checkbox" autocomplete="off"> Communications
-		  </label>
-		</div>
+    </div>
+    <div class="container">
+      <form>
+          <div class="row">
+            <div class=" col-md-4"><input type="checkbox" ><label> Art/Design </label></div>
+            <div class=" col-md-4"><input type="checkbox" ><label> Marketing </label></div>
+            <div class=" col-md-4"><input type="checkbox" ><label> Sciences </label></div>
+          </div>
+          <div class="row">
+            <div class=" col-md-4"><input type="checkbox" ><label> Business </label></div>
+            <div class=" col-md-4"><input type="checkbox" ><label> Advertising </label></div>
+            <div class=" col-md-4"><input type="checkbox" ><label> Engineering </label></div>
+          </div>
+          <div class="row">
+            <div class=" col-md-4"><input type="checkbox" ><label> Coding </label></div>
+            <div class=" col-md-4"><input type="checkbox" ><label> Communications </label></div>
+          </div>
+      </form>
+    </div>
   </div>
+  <div class="container">
+    <div class ="row" ng-repeat="item_row in item_rows">
+      <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="item in item_row">
+        <div class="thumbnail">
+          <h2> {{item.title}} </h2>
+          <img src="{{item.source}}" alt="">
+          <div class="caption">
+            <h4> {{item.description}} </h4>
+          </div>
+          <p>
+            <a href="{{item.link}}">MORE</a>
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
  
 
 
-    </div>
-  </ul>
+  <script>
+    $('input:checkbox').screwDefaultButtons({ 
+      image: "url(images/radioSmall.jpg)",
+      width:   45,
+      height:  45
+    }); 
+  </script>
 
 </body>
 </html>
